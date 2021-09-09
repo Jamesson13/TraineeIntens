@@ -60,7 +60,7 @@ public class UserDao implements Dao<User>{
     @Override
     public void addUser(User user) {
         if (!contains(user)) {
-            String sql = "insert into public.users(user_age, first_name, last_name) values (?, ?, ?)";
+            String sql = "insert into public.users(first_name, last_name, user_age) values (?, ?, ?)";
             try (Connection connection = DBConnection.getInstance().getConnection()) {
                 connection.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ);
                 try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
