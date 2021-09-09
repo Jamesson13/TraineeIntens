@@ -13,7 +13,7 @@ public class DBConnection {
         try{
             Class.forName("org.postgresql.Driver");
             String ur1 = "jdbc:postgresql://192.168.0.109:5432/Users";
-            String username = "postgres";
+            String username = "databasevlad";
             String password = "Odessa1996";
             this.connection = DriverManager.getConnection(ur1,username,password);
         }catch (ClassNotFoundException ex){
