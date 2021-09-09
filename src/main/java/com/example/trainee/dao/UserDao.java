@@ -64,9 +64,9 @@ public class UserDao implements Dao<User>{
             try (Connection connection = DBConnection.getInstance().getConnection()) {
                 connection.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ);
                 try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-                    preparedStatement.setInt(1, user.getUserAge());
-                    preparedStatement.setString(2, user.getFirstName());
-                    preparedStatement.setString(3, user.getLastName());
+                    preparedStatement.setString(1, user.getFirstName());
+                    preparedStatement.setString(2, user.getLastName());
+                    preparedStatement.setInt(3, user.getUserAge());
                     preparedStatement.executeUpdate();
                 }
             } catch (SQLException sqlException) {
