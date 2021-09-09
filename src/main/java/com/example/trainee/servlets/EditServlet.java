@@ -36,9 +36,9 @@ public class EditServlet extends HttpServlet {
 
         try {
             int userId = Integer.parseInt(request.getParameter("user_id"));
-            int userAge = Integer.parseInt(request.getParameter("user_age"));
             String firstName = request.getParameter("first_name");
             String lastName = request.getParameter("last_name");
+            int userAge = Integer.parseInt(request.getParameter("user_age"));
             User user = new User(userId, firstName, lastName, userAge);
             UserService.update(user);
             response.sendRedirect(request.getContextPath() + "/index");

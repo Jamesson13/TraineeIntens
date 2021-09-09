@@ -24,9 +24,9 @@ public class DataInsertionServlet extends HttpServlet {
             throws ServletException, IOException {
 
         try {
-            int age = Integer.parseInt(request.getParameter("user_age"));
             String firstName = request.getParameter("first_name");
             String lastName = request.getParameter("last_name");
+            int age = Integer.parseInt(request.getParameter("user_age"));
             UserService.addUser(new User(firstName, lastName, age));
             response.sendRedirect(request.getContextPath() + "/index");
             System.out.println(request.getContextPath());
