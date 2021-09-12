@@ -12,8 +12,8 @@ public class DBConnection {
     private DBConnection() throws SQLException {
         try{
             Class.forName("org.postgresql.Driver");
-            String ur1 = "jdbc:postgresql://192.168.0.109:5432/Users";
-            String username = "databasevlad";
+            String ur1 = "jdbc:postgresql://192.168.0.109:5432/databasevlad";
+            String username = "postgres";
             String password = "Odessa1996";
             this.connection = DriverManager.getConnection(ur1,username,password);
         }catch (ClassNotFoundException ex){
