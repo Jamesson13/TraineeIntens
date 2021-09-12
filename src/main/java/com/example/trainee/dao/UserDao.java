@@ -44,7 +44,7 @@ public class UserDao implements Dao<User>{
     public void deleteUserById(int id) {
         String sql = "update public.traineegroup " +
                 "set isDeleted = ? " +
-                "where public.rauneegroup.user_id = ?";
+                "where public.traineegroup.user_id = ?";
         try (Connection connection = DBConnection.getInstance().getConnection()) {
             connection.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ);
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
@@ -60,7 +60,7 @@ public class UserDao implements Dao<User>{
     @Override
     public void addUser(User user) {
         if (!contains(user)) {
-            String sql = "insert into public.rauneegroup(first_name, last_name, user_age) values (?, ?, ?)";
+            String sql = "insert into public.traineegroup(first_name, last_name, user_age) values (?, ?, ?)";
             try (Connection connection = DBConnection.getInstance().getConnection()) {
                 connection.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ);
                 try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
@@ -78,7 +78,7 @@ public class UserDao implements Dao<User>{
     @Override
     public User selectById(int id) {
         User user = null;
-        String sql = "select * from public.trauneegroup where user_id = ?";
+        String sql = "select * from public.traineegroup where user_id = ?";
         try (Connection connection = DBConnection.getInstance().getConnection()) {
             connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
@@ -101,16 +101,16 @@ public class UserDao implements Dao<User>{
     @Override
     public int updateUser(User user) {
         String sql = "update public.traineegroup " +
-                "set user_age = ?, " +
-                "first_name = ?, " +
+                "set first_name = ?, " +
                 "last_name = ? " +
+                "user_age = ?" +
                 "where user_id = ?";
         try (Connection connection = DBConnection.getInstance().getConnection()){
             connection.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ);
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-                preparedStatement.setInt(1, user.getUserAge());
-                preparedStatement.setString(2, user.getFirstName());
-                preparedStatement.setString(3, user.getLastName());
+                preparedStatement.setString(1, user.getFirstName());
+                preparedStatement.setString(2, user.getLastName());
+                preparedStatement.setInt(3, user.getUserAge());
                 preparedStatement.setInt(4, user.getUserId());
                 preparedStatement.executeUpdate();
             }

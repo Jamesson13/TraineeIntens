@@ -11,7 +11,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>trauneegroup</title>
+    <title>databasevlad</title>
     <style>
         table {
             font-family: arial, sans-serif;
@@ -29,7 +29,7 @@
     </style>
 </head>
 <body>
-<h2>trauneegroup List</h2>
+<h2>databasevlad List</h2>
 <p><a href='<c:url value="/insert" />'>Insert user</a></p>
 <table style="width:100%">
     <tr>
