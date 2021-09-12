@@ -11,7 +11,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Users</title>
+    <title>trauneegroup</title>
     <style>
         table {
             font-family: arial, sans-serif;
@@ -29,7 +29,7 @@
     </style>
 </head>
 <body>
-<h2>Users List</h2>
+<h2>trauneegroup List</h2>
 <p><a href='<c:url value="/insert" />'>Insert user</a></p>
 <table style="width:100%">
     <tr>
@@ -43,7 +43,7 @@
 
         <th></th>
     </tr>
-    <c:forEach var="user" items="${requestScope.users}">
+    <c:forEach var="user" items="${requestScope.traineegroup}">
         <tr>
             <td>${user.userId}</td>
             <td>${user.firstName}</td>

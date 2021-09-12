@@ -21,7 +21,7 @@ public class EditServlet extends HttpServlet {
             int user_id = Integer.parseInt(request.getParameter("user_id"));
             User user = UserService.findById(user_id);
             if (user != null) {
-                request.setAttribute("user", user);
+                request.setAttribute("traineegroup", user);
                 getServletContext().getRequestDispatcher("/edit.jsp").forward(request, response);
             } else {
                 getServletContext().getRequestDispatcher("/notfound.jsp").forward(request, response);

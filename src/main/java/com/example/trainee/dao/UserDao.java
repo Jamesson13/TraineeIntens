@@ -44,7 +44,7 @@ public class UserDao implements Dao<User>{
     public void deleteUserById(int id) {
         String sql = "update public.traineegroup " +
                 "set isDeleted = ? " +
-                "where public.traineegroup.user_id = ?";
+                "where public.rauneegroup.user_id = ?";
         try (Connection connection = DBConnection.getInstance().getConnection()) {
             connection.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ);
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
@@ -60,7 +60,7 @@ public class UserDao implements Dao<User>{
     @Override
     public void addUser(User user) {
         if (!contains(user)) {
-            String sql = "insert into public.traineegroup(first_name, last_name, user_age) values (?, ?, ?)";
+            String sql = "insert into public.rauneegroup(first_name, last_name, user_age) values (?, ?, ?)";
             try (Connection connection = DBConnection.getInstance().getConnection()) {
                 connection.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ);
                 try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
@@ -78,7 +78,7 @@ public class UserDao implements Dao<User>{
     @Override
     public User selectById(int id) {
         User user = null;
-        String sql = "select * from public.traineegroup where user_id = ?";
+        String sql = "select * from public.trauneegroup where user_id = ?";
         try (Connection connection = DBConnection.getInstance().getConnection()) {
             connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
@@ -86,9 +86,9 @@ public class UserDao implements Dao<User>{
                 ResultSet resultSet = preparedStatement.executeQuery();
                 if (resultSet.next()) {
                     int userId = resultSet.getInt(1);
-                    String firstName = resultSet.getString(3);
+                    String firstName = resultSet.getString(2);
                     String lastName = resultSet.getString(3);
-                    int userAge = resultSet.getInt(5);
+                    int userAge = resultSet.getInt(4);
                     user = new User(userId, firstName, lastName, userAge);
                 }
             }
