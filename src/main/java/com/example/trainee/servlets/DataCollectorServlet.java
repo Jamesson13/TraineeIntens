@@ -18,7 +18,7 @@ public class DataCollectorServlet extends HttpServlet {
             throws ServletException, IOException {
 
         Set<User> users = UserService.printUsers();
-        request.setAttribute("rauneegroup", users);
+        request.setAttribute("traineegroup", users);
 
         getServletContext()
                 .getRequestDispatcher("/index.jsp")
