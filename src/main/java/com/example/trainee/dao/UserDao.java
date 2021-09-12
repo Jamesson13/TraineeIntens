@@ -19,7 +19,7 @@ public class UserDao implements Dao<User>{
 
     @Override
     public Set<User> getAllUsers(){
-        String sql = "select * from public.users where isdeleted = ?";
+        String sql = "select * from public.traineegroup where isdeleted = ?";
         try (Connection connection = DBConnection.getInstance().getConnection()){
             connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)){
@@ -42,9 +42,9 @@ public class UserDao implements Dao<User>{
 
     @Override
     public void deleteUserById(int id) {
-        String sql = "update public.users " +
+        String sql = "update public.traineegroup " +
                 "set isDeleted = ? " +
-                "where public.users.user_id = ?";
+                "where public.traineegroup.user_id = ?";
         try (Connection connection = DBConnection.getInstance().getConnection()) {
             connection.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ);
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
@@ -60,7 +60,7 @@ public class UserDao implements Dao<User>{
     @Override
     public void addUser(User user) {
         if (!contains(user)) {
-            String sql = "insert into public.users(first_name, last_name, user_age) values (?, ?, ?)";
+            String sql = "insert into public.traineegroup(first_name, last_name, user_age) values (?, ?, ?)";
             try (Connection connection = DBConnection.getInstance().getConnection()) {
                 connection.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ);
                 try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
@@ -78,7 +78,7 @@ public class UserDao implements Dao<User>{
     @Override
     public User selectById(int id) {
         User user = null;
-        String sql = "select * from public.users where user_id = ?";
+        String sql = "select * from public.traineegroup where user_id = ?";
         try (Connection connection = DBConnection.getInstance().getConnection()) {
             connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
@@ -100,7 +100,7 @@ public class UserDao implements Dao<User>{
 
     @Override
     public int updateUser(User user) {
-        String sql = "update public.users " +
+        String sql = "update public.traineegroup " +
                 "set user_age = ?, " +
                 "first_name = ?, " +
                 "last_name = ? " +
