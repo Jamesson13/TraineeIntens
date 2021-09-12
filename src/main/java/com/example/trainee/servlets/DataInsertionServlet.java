@@ -28,8 +28,7 @@ public class DataInsertionServlet extends HttpServlet {
             String lastName = request.getParameter("last_name");
             int age = Integer.parseInt(request.getParameter("user_age"));
             UserService.addUser(new User(firstName, lastName, age));
-            response.sendRedirect(request.getContextPath() + "/index");
-            System.out.println(request.getContextPath());
+            response.sendRedirect(request.getContextPath());
         } catch (Exception ex) {
             getServletContext().getRequestDispatcher("/insert.jsp").forward(request, response);
         }

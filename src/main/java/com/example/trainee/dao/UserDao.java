@@ -27,9 +27,9 @@ public class UserDao implements Dao<User>{
                 ResultSet resultSet = preparedStatement.executeQuery();
                 while (resultSet.next()){
                     int userId = resultSet.getInt(1);
-                    String firstName = resultSet.getString(3);
-                    String lastName = resultSet.getString(4);
-                    int userAge = resultSet.getInt(5);
+                    String firstName = resultSet.getString(2);
+                    String lastName = resultSet.getString(3);
+                    int userAge = resultSet.getInt(4);
                     User user = new User(userId,firstName,lastName,userAge);
                     users.add(user);
                 }
@@ -102,7 +102,7 @@ public class UserDao implements Dao<User>{
     public int updateUser(User user) {
         String sql = "update public.traineegroup " +
                 "set first_name = ?, " +
-                "last_name = ? " +
+                "last_name = ?, " +
                 "user_age = ?" +
                 "where user_id = ?";
         try (Connection connection = DBConnection.getInstance().getConnection()){

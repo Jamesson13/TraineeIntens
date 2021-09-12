@@ -21,7 +21,7 @@ public class EditServlet extends HttpServlet {
             int user_id = Integer.parseInt(request.getParameter("user_id"));
             User user = UserService.findById(user_id);
             if (user != null) {
-                request.setAttribute("traineegroup", user);
+                request.setAttribute("user", user);
                 getServletContext().getRequestDispatcher("/edit.jsp").forward(request, response);
             } else {
                 getServletContext().getRequestDispatcher("/notfound.jsp").forward(request, response);
@@ -41,7 +41,7 @@ public class EditServlet extends HttpServlet {
             int userAge = Integer.parseInt(request.getParameter("user_age"));
             User user = new User(userId, firstName, lastName, userAge);
             UserService.update(user);
-            response.sendRedirect(request.getContextPath() + "/index");
+            response.sendRedirect(request.getContextPath());
         } catch (Exception ex) {
             getServletContext().getRequestDispatcher("/notfound.jsp").forward(request, response);
         }
